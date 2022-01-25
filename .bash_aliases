@@ -15,9 +15,15 @@
 #
 # . ~/.bashrc
 #
+# alias edit=vim
+# alias edit=nano
+# alias edit=gedit
+#
 
 alias ..='cd ..'
 alias cd..='cd ..'
+## Not work. Need a Bash function to pass a parameter !
+# alias mkcd='mkdir -p -- "$1" && cd -- "$1"'
 
 ## Clear the screen. Or just Ctrl + L
 alias c='clear'
@@ -27,10 +33,13 @@ alias lt='ls --human-readable --size -1 -S --classify'
 ## MacOS / BSD
 # alias lt='du -sh * | sort -h'
 
-alias hg='history | grep '
 alias gh='history | grep '
+alias hg='history | grep '
 alias left='ls -t -1'
 alias count='find . -type f | wc -l'
+
+alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
+alias mnt2='mount | grep -E ^/dev | column -t'
 
 ## Decompress
 alias untar='tar -zxvf '
@@ -48,8 +57,20 @@ alias tcn='mv --force -t ~/.local/share/Trash'
 ## Copy with progress bar
 alias cpv='rsync -ah --info=progress2'
 
+## Simplify your Git workflow here ?
+
+## install colordiff package :)
+# alias diff='colordiff'
+
 # alias h='history | less'
 # alias j='jobs -l'
+
+## Debian / Ubuntu and friends
+# install with apt-get
+alias apt-get='sudo apt-get '
+alias updatey='sudo apt-get --yes '
+# update on one command
+alias update='sudo apt-get update && sudo apt-get upgrade'
 
 ## Pass reboot / halt / poweroff via sudo
 # alias reboot='sudo /sbin/reboot'
@@ -87,6 +108,3 @@ alias ipi='hostname -I'
 # alias ipi='ifconfig getifaddr en0'
 
 alias psg='ps auwx | grep '
-
-
-
